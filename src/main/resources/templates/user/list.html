@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>userList</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+</head>
+<body>
+<br/>
+<h1>用户列表</h1>
+<br/><br/>
+
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>名称</th>
+            <th>密码</th>
+            <th>年龄</th>
+            <th>修改</th>
+            <th>删除</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="user : ${users}">
+            <th scope="row" th:text="${user.id}">1</th>
+            <td th:text="${user.userName}">neo</td>
+            <td th:text="${user.password}">Otto</td>
+            <td th:text="${user.age}">6</td>
+            <td><a th:href="@{/toEdit(id=${user.id})}">修改</a></td>
+            <td><a th:href="@{/delete(id=${user.id})}">删除</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+        <a href="/toAdd" th:href="@{/toAdd}">新增</a>
+
+
+</body>
+</html>
